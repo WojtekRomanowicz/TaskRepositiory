@@ -23,10 +23,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class TrelloClient {
 
-    @Autowired
+
     private final RestTemplate restTemplate;
 
-    @Autowired
+
     private final TrelloConfig trelloConfig;
 
 
