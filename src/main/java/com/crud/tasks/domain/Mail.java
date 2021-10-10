@@ -8,6 +8,7 @@ import java.util.List;
 
 @Getter
 @Builder
+@AllArgsConstructor
 public class Mail {
     private final String mailTo;
     private final String subject;
