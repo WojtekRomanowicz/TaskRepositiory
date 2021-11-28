@@ -19,7 +19,7 @@ public class TrelloMaperTests {
     private TrelloMapper trelloMapper;
 
     @Test
-    void TrelloMapperMapToCardTestSuite(){
+    void trelloMapperMapToCardTestSuite(){
         //Given
         final TrelloCardDto trelloCardDto = new TrelloCardDto("test", "to test", "1", "1");
 
@@ -36,7 +36,7 @@ public class TrelloMaperTests {
     }
 
     @Test
-    void TrelloMapperMapToCardDtoTestSuite(){
+    void trelloMapperMapToCardDtoTestSuite(){
         //Given
         final TrelloCard trelloCard = new TrelloCard("test", "to test", "1", "1");
 
@@ -53,7 +53,7 @@ public class TrelloMaperTests {
     }
 
     @Test
-    void TrelloMapperMapToList(){
+    void trelloMapperMapToList(){
         //Given
         List<TrelloListDto> listDto = new ArrayList<>();
         final TrelloListDto trelloListDto = new TrelloListDto("1", "test", true);
@@ -69,7 +69,7 @@ public class TrelloMaperTests {
     }
 
     @Test
-    void TrelloMapperMapToListDto(){
+    void trelloMapperMapToListDto(){
         //Given
         List<TrelloList> list = new ArrayList<>();
         final TrelloList trelloList = new TrelloList("1", "test", true);
@@ -85,7 +85,7 @@ public class TrelloMaperTests {
     }
 
     @Test
-    void TrelloMapperMapToBoards(){
+    void trelloMapperMapToBoards(){
         //Given
         List<TrelloListDto> listDto = new ArrayList<>();
         final TrelloListDto trelloListDto = new TrelloListDto("1", "test", true);
@@ -105,7 +105,7 @@ public class TrelloMaperTests {
     }
 
     @Test
-    void TrelloMapperMapToBoardsDto(){
+    void trelloMapperMapToBoardsDto(){
         //Given
         List<TrelloList> list = new ArrayList<>();
         final TrelloList trelloList = new TrelloList("1", "test", true);
