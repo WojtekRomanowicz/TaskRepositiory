@@ -1,9 +1,6 @@
 package com.crud.tasks.controller;
 
-import com.crud.tasks.domain.CreatedTrelloCardDto;
-import com.crud.tasks.domain.TrelloBoardDto;
-import com.crud.tasks.domain.TrelloCardDto;
-import com.crud.tasks.domain.TrelloListDto;
+import com.crud.tasks.domain.*;
 import com.crud.tasks.trello.facade.TrelloFacade;
 import com.google.gson.Gson;
 import org.hamcrest.Matchers;
@@ -75,17 +72,26 @@ class TrelloControllerTest {
     @Test
     void shouldCreateTrelloCard() throws Exception {
         // Given
-        Gson gson = new Gson();
-
-
         TrelloCardDto trelloCardDto =
                 new TrelloCardDto("Test", "Test description", "top", "1");
 
+        CreatedTrelloCard createdTrelloCard =
+                new CreatedTrelloCard("232", "Test", "http://test.com");
+
+        when(trelloFacade.createCard(any(TrelloCardDto.class))).thenReturn(createdTrelloCard);
+
+        Gson gson = new Gson();
         String jsonContent = gson.toJson(trelloCardDto);
 
-        CreatedTrelloCardDto createdTrelloCardDto =
-                new CreatedTrelloCardDto("232", "Test", "http://test.com");
-
-       // when(trelloFacade.createCard(any(TrelloCardDto.class))).thenReturn(createdTrelloCardDto);
+        //When & Then
+        mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/v1/trello/createTrelloCard")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("UTF-8")
+                        .content(jsonContent))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is("232")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("Test")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.shortUrl", Matchers.is("http://test.com")));
     }
 }
